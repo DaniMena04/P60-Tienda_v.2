@@ -1,0 +1,8 @@
+<RCC>
+    <qresource prefix="/new/prefix1">
+        <file>agregar-archivo.png</file>
+        <file>cerrar-sesion.png</file>
+        <file>disquete.png</file>
+        <file>tienda.png</file>
+    </qresource>
+</RCC>

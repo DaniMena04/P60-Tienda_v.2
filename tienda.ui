@@ -240,7 +240,6 @@
                <property name="font">
                 <font>
                  <pointsize>14</pointsize>
-                 <weight>75</weight>
                  <bold>true</bold>
                 </font>
                </property>
@@ -260,7 +259,6 @@
                <property name="font">
                 <font>
                  <pointsize>14</pointsize>
-                 <weight>75</weight>
                  <bold>true</bold>
                 </font>
                </property>
@@ -293,11 +291,53 @@ color: rgb(224, 27, 36);</string>
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>22</height>
+     <height>21</height>
     </rect>
    </property>
+   <widget class="QMenu" name="menuMenu">
+    <property name="title">
+     <string>Menu</string>
+    </property>
+    <addaction name="actionGuadar"/>
+    <addaction name="actionAbrir"/>
+    <addaction name="actionNuevo"/>
+    <addaction name="actionAgregar"/>
+   </widget>
+   <widget class="QMenu" name="menuSobre">
+    <property name="title">
+     <string>Sobre </string>
+    </property>
+    <addaction name="actionAcerca_de"/>
+   </widget>
+   <addaction name="menuMenu"/>
+   <addaction name="menuSobre"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionGuadar">
+   <property name="text">
+    <string>Guadar</string>
+   </property>
+  </action>
+  <action name="actionAbrir">
+   <property name="text">
+    <string>Abrir</string>
+   </property>
+  </action>
+  <action name="actionNuevo">
+   <property name="text">
+    <string>Nuevo</string>
+   </property>
+  </action>
+  <action name="actionAgregar">
+   <property name="text">
+    <string>Agregar</string>
+   </property>
+  </action>
+  <action name="actionAcerca_de">
+   <property name="text">
+    <string>Acerca de</string>
+   </property>
+  </action>
  </widget>
  <resources/>
  <connections/>
