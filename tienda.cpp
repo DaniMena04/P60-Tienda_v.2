@@ -125,8 +125,52 @@ void Tienda::on_btnAgregar_released()
 
 }
 
+void Tienda::on_actionGuadar_triggered()
+{
+    // Abrir un cuadro de dialogo para seleccionar el path y archivo a guardadr
+    QString nombreArchivo = QFileDialog::getSaveFileName(this,"Guardar factura",QDir::home().absolutePath() + "/factura.csv","Archivos de calculo (*.csv)");
+    QFile archivo(nombreArchivo);
+    if(archivo.open(QFile::WriteOnly | QFile::Truncate)){
+        //Crear un objeto "stream" de texto
+        QTextStream salida(&archivo);
+        // Enviar los datos del resultado a la salida
+        salida << ui->outDetalle->;
+        // Mostrar mensaje en la barra de estados
+        ui->statusbar->showMessage("Datos guardados en: " + nombreArchivo, 5000);
+        // Crear el archivo
+        archivo.close();
+    }else{
+        // Mensaje de error
+        QMessageBox::warning(this,"Guardar archivo","Nose puede acceder al archivo para guardar los datos");
+    }
+}
 
 
+void Tienda::on_actionAbrir_triggered()
+{
+
+}
 
 
+void Tienda::on_actionNuevo_triggered()
+{
+    // Limpiar widgets
+    limpiar();
+    // Limpiar el texto de calculos
+    ui->outTexto->clear();
+    // Mostrar mensaje de estado
+    ui->statusbar->showMessage("Nueva hoja de calculos de salario",3000);
+}
+
+
+void Tienda::on_actionAgregar_triggered()
+{
+
+}
+
+
+void Tienda::on_actionAcerca_de_triggered()
+{
+
+}
 

@@ -24,6 +24,16 @@ private slots:
 
     void on_btnAgregar_released();
 
+    void on_actionGuadar_triggered();
+
+    void on_actionAbrir_triggered();
+
+    void on_actionNuevo_triggered();
+
+    void on_actionAgregar_triggered();
+
+    void on_actionAcerca_de_triggered();
+
 private:
     Ui::Tienda *ui;
     QList<Producto*> m_productos;
