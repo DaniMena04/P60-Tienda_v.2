@@ -9,15 +9,18 @@ CONFIG += c++11
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    acerca_de.cpp \
     main.cpp \
     producto.cpp \
     tienda.cpp
 
 HEADERS += \
+    acerca_de.h \
     producto.h \
     tienda.h
 
 FORMS += \
+    acerca_de.ui \
     tienda.ui
 
 # Default rules for deployment.

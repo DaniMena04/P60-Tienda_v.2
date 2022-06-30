@@ -2,6 +2,7 @@
 #include "ui_tienda.h"
 
 #include <QDebug>
+#include <QDir>
 
 Tienda::Tienda(QWidget *parent)
     : QMainWindow(parent)
@@ -31,11 +32,42 @@ Tienda::~Tienda()
  */
 void Tienda::cargarProductos()
 {
-    // Crear productos "quemados" en el código
-    m_productos.append(new Producto(1, "Leche", 0.80));
-    m_productos.append(new Producto(2, "Pan", 0.15));
-    m_productos.append(new Producto(3, "Queso", 2.50));
-    // Podría leerse de una base de datos, de un archivo o incluso de Internet
+
+    QDir actual = QDir::current(); //directorio actual
+    // El path al archivo CSV
+    QString archivoProductos = actual.absolutePath() + "/debug/productos.csv";
+    QFile archivo(archivoProductos);
+    //qDebug() << archivo.fileName();
+
+    if (archivo.open(QIODevice::ReadOnly | QIODevice::Text)){
+
+        bool primera = true;
+        QTextStream in(&archivo);
+        while (!in.atEnd()) {
+            QString linea = in.readLine();
+            if (primera){
+                primera = false;
+                continue;
+            }
+            QStringList datos = linea.split(";");
+            QString precio = datos.at(2);
+            float p = precio.toFloat();
+            int id = datos.at(0).toInt();
+            m_productos.append(new Producto(id, datos.at(1), p));
+        }
+
+        archivo.close();
+    }else{
+        qDebug()<< "No se pudo abrir el archivo";
+    }
+
+
+
+    //    Crear productos "quemados" en el código
+    //    m_productos.append(new Producto(1, "Leche", 0.80));
+    //    m_productos.append(new Producto(2, "Pan", 0.15));
+    //    m_productos.append(new Producto(3, "Queso", 2.50));
+    //    Podría leerse de una base de datos, de un archivo o incluso de Internet
 }
 
 void Tienda::calcular(float stProducto)
