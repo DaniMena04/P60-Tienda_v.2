@@ -1,9 +1,6 @@
 #include "tienda.h"
 #include "ui_tienda.h"
 
-#include <QDebug>
-#include <QDir>
-
 Tienda::Tienda(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::Tienda)
@@ -21,6 +18,10 @@ Tienda::Tienda(QWidget *parent)
     ui->outDetalle->setHorizontalHeaderLabels(cabecera);
     // Establecer el subtotal a 0
     m_subtotal = 0;
+    //    mModel = new QStandardItemModel(this);
+    //    ui->outDetalle->setModel(mModel);
+    //    setCentralWidget(ui->outDetalle);
+    //    setWindowTitle("Du CSV Viewer");
 }
 
 Tienda::~Tienda()
@@ -82,6 +83,15 @@ void Tienda::calcular(float stProducto)
     ui->outTotal->setText("$ " + QString::number(total, 'f', 2));
 }
 
+//void Tienda::setValueAt(int ix, int jx, const QString &value)
+//{
+//    if(!mModel->item(ix, jx)){
+//        mModel->setItem(ix, jx, new QStandardItem(value));
+//    }else{
+//        mModel->item(ix, jx)->setText(value);
+//    }
+//}
+
 
 void Tienda::on_inProducto_currentIndexChanged(int index)
 {
@@ -128,49 +138,101 @@ void Tienda::on_btnAgregar_released()
 void Tienda::on_actionGuadar_triggered()
 {
     // Abrir un cuadro de dialogo para seleccionar el path y archivo a guardadr
-    QString nombreArchivo = QFileDialog::getSaveFileName(this,"Guardar factura",QDir::home().absolutePath() + "/factura.csv","Archivos de calculo (*.csv)");
-    QFile archivo(nombreArchivo);
-    if(archivo.open(QFile::WriteOnly | QFile::Truncate)){
-        //Crear un objeto "stream" de texto
-        QTextStream salida(&archivo);
-        // Enviar los datos del resultado a la salida
-        salida << ui->outDetalle->;
-        // Mostrar mensaje en la barra de estados
-        ui->statusbar->showMessage("Datos guardados en: " + nombreArchivo, 5000);
-        // Crear el archivo
-        archivo.close();
-    }else{
-        // Mensaje de error
-        QMessageBox::warning(this,"Guardar archivo","Nose puede acceder al archivo para guardar los datos");
+    QTextStream io;
+    QString nombreArchivo = QFileDialog::getSaveFileName(this,"Guardar factura",QDir::current().absolutePath() + "/productos.csv","Archivos de calculo (*.csv)");
+    QFile archivo;
+    archivo.setFileName(nombreArchivo);
+    archivo.open(QFile::WriteOnly | QFile::Truncate);
+    if(!archivo.isOpen()){
+        QMessageBox::critical(this,"Aviso","No se pudo abrir el archivo");
+        return;
     }
+    io.setDevice(&archivo);
+    int fila = ui->outDetalle->rowCount();
+    int columna = ui->outDetalle->columnCount();
+    QString celda;
+    for(int i=0; i<fila; i++){
+        for(int j=0; j<columna; j++){
+            if(j != (columna-1)){
+                celda = ui->outDetalle->item(i,j)->text()+";";
+            }else{
+                celda = ui->outDetalle->item(i,j)->text();
+            }
+
+            io << celda;
+        }
+
+        io << "\n";
+    }
+
+    QMessageBox::information(this,"Aviso","Archivo guardado");
+    archivo.flush();
+    archivo.close();
 }
 
 
-void Tienda::on_actionAbrir_triggered()
-{
+//void Tienda::on_actionAbrir_triggered()
+//{
+//    auto nombreArchivo = QFileDialog::getOpenFileName(this,"Abrir",QDir::rootPath(), "Archivos csv (*.csv)");
+//    if (nombreArchivo.isEmpty()){
+//        return;
+//    }
 
-}
+//    QFile archivo(nombreArchivo);
+//    if (!archivo.open(QIODevice::ReadOnly | QIODevice::Text)){
+//        return;
+//    }
+
+//    QTextStream salida(&archivo);
+//    int filascCount = 0;
+//    while(!salida.atEnd()){
+//        mModel->setRowCount(filascCount);
+//        auto line = salida.readLine();
+//        auto valor = line.split(";");
+//        const int columCount = valor.size();
+//        mModel->setColumnCount(columCount);
+//        for(int j = 0; j < columCount; j++){
+//            setValueAt(filascCount, j, valor.at(j));
+//        }
+//        ++ filascCount;
+//    }
+//    archivo.close();
+//}
 
 
 void Tienda::on_actionNuevo_triggered()
 {
-    // Limpiar widgets
-    limpiar();
-    // Limpiar el texto de calculos
-    ui->outTexto->clear();
-    // Mostrar mensaje de estado
-    ui->statusbar->showMessage("Nueva hoja de calculos de salario",3000);
-}
 
-
-void Tienda::on_actionAgregar_triggered()
-{
+    while(ui->outDetalle->rowCount() > 0){
+        ui->outDetalle->removeRow(0);
+    }
+    ui->statusbar->showMessage("Nueva hoja de calculos",3000);
 
 }
-
 
 void Tienda::on_actionAcerca_de_triggered()
 {
+    acerca_de *dialog = new acerca_de(this);
+
+    dialog->setVersion(VERSION);
+
+    dialog->exec();
+}
+
+
+void Tienda::on_btnFacturar_clicked()
+{
+    if(ui->inCedula->displayText().isEmpty()){
+        QMessageBox::warning(this, "Advertencia", "El campo de la cedula esta vacia");
+        return;
+    }else if(ui->inEmail->displayText().isEmpty()){
+        QMessageBox::warning(this, "Advertencia", "El campo del E-mail esta vacio");
+        return;
+    }else if(ui->inNombre->displayText().isEmpty()){
+        QMessageBox::warning(this, "Advertencia", "El campo del nombre esta vacio");
+        return;
+    }
+
 
 }
 

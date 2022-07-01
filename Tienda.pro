@@ -10,17 +10,20 @@ CONFIG += c++11
 
 SOURCES += \
     acerca_de.cpp \
+    factura.cpp \
     main.cpp \
     producto.cpp \
     tienda.cpp
 
 HEADERS += \
     acerca_de.h \
+    factura.h \
     producto.h \
     tienda.h
 
 FORMS += \
     acerca_de.ui \
+    factura.ui \
     tienda.ui
 
 # Default rules for deployment.
@@ -30,3 +33,4 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 RESOURCES += \
     Recursos/Img/Recursos.qrc
+

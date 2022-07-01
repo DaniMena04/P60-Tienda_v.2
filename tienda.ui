@@ -7,11 +7,15 @@
     <x>0</x>
     <y>0</y>
     <width>800</width>
-    <height>552</height>
+    <height>564</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Tienda</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="Recursos/Img/Recursos.qrc">
+    <normaloff>:/new/prefix1/tienda.png</normaloff>:/new/prefix1/tienda.png</iconset>
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QHBoxLayout" name="horizontalLayout_3">
@@ -37,7 +41,7 @@
          </property>
          <layout class="QFormLayout" name="formLayout">
           <item row="0" column="0">
-           <widget class="QLabel" name="label">
+           <widget class="QLabel" name="lbCliente">
             <property name="text">
              <string>Cédula:</string>
             </property>
@@ -47,7 +51,7 @@
            <widget class="QLineEdit" name="inCedula"/>
           </item>
           <item row="2" column="0">
-           <widget class="QLabel" name="label_2">
+           <widget class="QLabel" name="lbNombre">
             <property name="text">
              <string>Nombre:</string>
             </property>
@@ -57,7 +61,7 @@
            <widget class="QLineEdit" name="inNombre"/>
           </item>
           <item row="4" column="0">
-           <widget class="QLabel" name="label_3">
+           <widget class="QLabel" name="lbTelefono">
             <property name="text">
              <string>Teléfono:</string>
             </property>
@@ -67,7 +71,7 @@
            <widget class="QLineEdit" name="inTelefono"/>
           </item>
           <item row="6" column="0">
-           <widget class="QLabel" name="label_4">
+           <widget class="QLabel" name="lbEmail">
             <property name="text">
              <string>E-mail:</string>
             </property>
@@ -77,18 +81,14 @@
            <widget class="QLineEdit" name="inEmail"/>
           </item>
           <item row="8" column="0">
-           <widget class="QLabel" name="label_5">
+           <widget class="QLabel" name="lbDireccion">
             <property name="text">
              <string>Dirección:</string>
             </property>
            </widget>
           </item>
           <item row="8" column="1">
-           <widget class="QPlainTextEdit" name="inDireccion">
-            <property name="lineWidth">
-             <number>3</number>
-            </property>
-           </widget>
+           <widget class="QTextEdit" name="inDireccion"/>
           </item>
          </layout>
         </widget>
@@ -100,7 +100,7 @@
          </property>
          <layout class="QFormLayout" name="formLayout_2">
           <item row="0" column="0">
-           <widget class="QLabel" name="label_6">
+           <widget class="QLabel" name="lbProducto">
             <property name="text">
              <string>Nombre:</string>
             </property>
@@ -110,7 +110,7 @@
            <widget class="QComboBox" name="inProducto"/>
           </item>
           <item row="2" column="0">
-           <widget class="QLabel" name="label_7">
+           <widget class="QLabel" name="lbCantidad">
             <property name="text">
              <string>Cantidad:</string>
             </property>
@@ -120,7 +120,7 @@
            <widget class="QSpinBox" name="inCantidad"/>
           </item>
           <item row="4" column="0">
-           <widget class="QLabel" name="label_8">
+           <widget class="QLabel" name="lbPrecio">
             <property name="text">
              <string>Precio:</string>
             </property>
@@ -190,7 +190,7 @@
            <widget class="QWidget" name="widget_4" native="true">
             <layout class="QFormLayout" name="formLayout_3">
              <item row="0" column="0">
-              <widget class="QLabel" name="label_10">
+              <widget class="QLabel" name="lbSubtotal">
                <property name="text">
                 <string>Subtotal:</string>
                </property>
@@ -213,7 +213,7 @@
               </widget>
              </item>
              <item row="1" column="0">
-              <widget class="QLabel" name="label_11">
+              <widget class="QLabel" name="lbIVA">
                <property name="text">
                 <string>IVA (12%):</string>
                </property>
@@ -236,7 +236,7 @@
               </widget>
              </item>
              <item row="2" column="0">
-              <widget class="QLabel" name="label_12">
+              <widget class="QLabel" name="lbTotal">
                <property name="font">
                 <font>
                  <pointsize>14</pointsize>
@@ -280,6 +280,13 @@ color: rgb(224, 27, 36);</string>
          </layout>
         </widget>
        </item>
+       <item>
+        <widget class="QPushButton" name="btnFacturar">
+         <property name="text">
+          <string>Facturar</string>
+         </property>
+        </widget>
+       </item>
       </layout>
      </widget>
     </item>
@@ -299,9 +306,7 @@ color: rgb(224, 27, 36);</string>
      <string>Menu</string>
     </property>
     <addaction name="actionGuadar"/>
-    <addaction name="actionAbrir"/>
     <addaction name="actionNuevo"/>
-    <addaction name="actionAgregar"/>
    </widget>
    <widget class="QMenu" name="menuSobre">
     <property name="title">
@@ -314,16 +319,28 @@ color: rgb(224, 27, 36);</string>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <action name="actionGuadar">
+   <property name="icon">
+    <iconset resource="Recursos/Img/Recursos.qrc">
+     <normaloff>:/new/prefix1/disquete.png</normaloff>:/new/prefix1/disquete.png</iconset>
+   </property>
    <property name="text">
     <string>Guadar</string>
    </property>
   </action>
   <action name="actionAbrir">
+   <property name="icon">
+    <iconset resource="Recursos/Img/Recursos.qrc">
+     <normaloff>:/new/prefix1/carpeta.png</normaloff>:/new/prefix1/carpeta.png</iconset>
+   </property>
    <property name="text">
     <string>Abrir</string>
    </property>
   </action>
   <action name="actionNuevo">
+   <property name="icon">
+    <iconset resource="Recursos/Img/Recursos.qrc">
+     <normaloff>:/new/prefix1/agregar-archivo.png</normaloff>:/new/prefix1/agregar-archivo.png</iconset>
+   </property>
    <property name="text">
     <string>Nuevo</string>
    </property>
@@ -334,11 +351,17 @@ color: rgb(224, 27, 36);</string>
    </property>
   </action>
   <action name="actionAcerca_de">
+   <property name="icon">
+    <iconset resource="Recursos/Img/Recursos.qrc">
+     <normaloff>:/new/prefix1/acerca-de.png</normaloff>:/new/prefix1/acerca-de.png</iconset>
+   </property>
    <property name="text">
     <string>Acerca de</string>
    </property>
   </action>
  </widget>
- <resources/>
+ <resources>
+  <include location="Recursos/Img/Recursos.qrc"/>
+ </resources>
  <connections/>
 </ui>

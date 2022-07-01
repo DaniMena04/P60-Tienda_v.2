@@ -18,7 +18,7 @@ acerca_de::~acerca_de()
 void acerca_de::setVersion(const QString &newVersion)
 {
     m_version = newVersion;
-    ui->
+    ui->outVersion->setText("v" + m_version);
 }
 
 int acerca_de::valor() const

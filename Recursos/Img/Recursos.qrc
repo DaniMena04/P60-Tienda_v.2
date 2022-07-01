@@ -4,5 +4,8 @@
         <file>cerrar-sesion.png</file>
         <file>disquete.png</file>
         <file>tienda.png</file>
+        <file>acerca-de.png</file>
+        <file>carpeta.png</file>
+        <file>engranajes.png</file>
     </qresource>
 </RCC>
