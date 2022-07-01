@@ -2,6 +2,8 @@
 #define FACTURA_H
 
 #include <QDialog>
+#include "tienda.h"
+
 
 namespace Ui {
 class Factura;
@@ -13,6 +15,7 @@ class Factura : public QDialog
 
 public:
     explicit Factura(QWidget *parent = nullptr);
+
     ~Factura();
 
 private:

@@ -6,9 +6,11 @@ Factura::Factura(QWidget *parent) :
     ui(new Ui::Factura)
 {
     ui->setupUi(this);
+
 }
 
 Factura::~Factura()
 {
     delete ui;
 }
+

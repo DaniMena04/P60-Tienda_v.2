@@ -12,8 +12,9 @@
 #include "producto.h"
 #include "acerca_de.h"
 
-#define IVA 12
+#define IVA 0.12
 #define VERSION "0.1"
+#define TIENDA "Mi tienda"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class Tienda; }

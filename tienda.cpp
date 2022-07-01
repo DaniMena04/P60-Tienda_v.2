@@ -18,6 +18,8 @@ Tienda::Tienda(QWidget *parent)
     ui->outDetalle->setHorizontalHeaderLabels(cabecera);
     // Establecer el subtotal a 0
     m_subtotal = 0;
+
+
     //    mModel = new QStandardItemModel(this);
     //    ui->outDetalle->setModel(mModel);
     //    setCentralWidget(ui->outDetalle);
@@ -59,16 +61,9 @@ void Tienda::cargarProductos()
 
         archivo.close();
     }else{
-        qDebug()<< "No se pudo abrir el archivo";
+        QMessageBox::critical(this,"Error","La lista de productos no se pudo cargar");
     }
 
-
-
-    //    Crear productos "quemados" en el código
-    //    m_productos.append(new Producto(1, "Leche", 0.80));
-    //    m_productos.append(new Producto(2, "Pan", 0.15));
-    //    m_productos.append(new Producto(3, "Queso", 2.50));
-    //    Podría leerse de una base de datos, de un archivo o incluso de Internet
 }
 
 void Tienda::calcular(float stProducto)

@@ -10,6 +10,7 @@ CONFIG += c++11
 
 SOURCES += \
     acerca_de.cpp \
+    cliente.cpp \
     factura.cpp \
     main.cpp \
     producto.cpp \
@@ -17,6 +18,7 @@ SOURCES += \
 
 HEADERS += \
     acerca_de.h \
+    cliente.h \
     factura.h \
     producto.h \
     tienda.h
