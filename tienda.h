@@ -11,6 +11,7 @@
 
 #include "producto.h"
 #include "acerca_de.h"
+#include "factura.h"
 
 #define IVA 0.12
 #define VERSION "0.1"

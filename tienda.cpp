@@ -38,7 +38,7 @@ void Tienda::cargarProductos()
 
     QDir actual = QDir::current(); //directorio actual
     // El path al archivo CSV
-    QString archivoProductos = actual.absolutePath() + "/debug/productos.csv";
+    QString archivoProductos = actual.absolutePath() + "/productos.csv";
     QFile archivo(archivoProductos);
     //qDebug() << archivo.fileName();
 
@@ -217,17 +217,14 @@ void Tienda::on_actionAcerca_de_triggered()
 
 void Tienda::on_btnFacturar_clicked()
 {
-    if(ui->inCedula->displayText().isEmpty()){
-        QMessageBox::warning(this, "Advertencia", "El campo de la cedula esta vacia");
+    if(ui->inCedula->displayText().isEmpty() || ui->inEmail->displayText().isEmpty() ||ui->inNombre->displayText().isEmpty()){
+        QMessageBox::warning(this, "Advertencia", "Algunos campos estan vacias");
         return;
-    }else if(ui->inEmail->displayText().isEmpty()){
-        QMessageBox::warning(this, "Advertencia", "El campo del E-mail esta vacio");
-        return;
-    }else if(ui->inNombre->displayText().isEmpty()){
-        QMessageBox::warning(this, "Advertencia", "El campo del nombre esta vacio");
-        return;
+    }else{
+        Factura *dialog = new Factura(this);
+        dialog->setTienda(TIENDA);
+        dialog->exec();
     }
-
 
 }
 

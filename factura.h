@@ -18,8 +18,14 @@ public:
 
     ~Factura();
 
+    QString tienda() const;
+
+    void setTienda(const QString &tienda);
+
+
 private:
     Ui::Factura *ui;
+    QString m_tienda;
 };
 
 #endif // FACTURA_H

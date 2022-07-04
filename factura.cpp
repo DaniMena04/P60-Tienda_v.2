@@ -14,3 +14,14 @@ Factura::~Factura()
     delete ui;
 }
 
+QString Factura::tienda() const
+{
+    return m_tienda;
+}
+
+void Factura::setTienda(const QString &tienda)
+{
+    m_tienda = tienda;
+    ui->outTitulo->setText(m_tienda);
+}
+

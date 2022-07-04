@@ -31,10 +31,11 @@
        </spacer>
       </item>
       <item>
-       <widget class="QLabel" name="label">
+       <widget class="QLabel" name="outTitulo">
         <property name="font">
          <font>
           <pointsize>17</pointsize>
+          <weight>75</weight>
           <italic>true</italic>
           <bold>true</bold>
          </font>
@@ -87,6 +88,7 @@
               <property name="font">
                <font>
                 <pointsize>15</pointsize>
+                <weight>75</weight>
                 <italic>true</italic>
                 <bold>true</bold>
                </font>
@@ -129,7 +131,7 @@
              </widget>
             </item>
             <item>
-             <widget class="QLineEdit" name="lineEdit">
+             <widget class="QLineEdit" name="outNombre">
               <property name="readOnly">
                <bool>true</bool>
               </property>
@@ -165,7 +167,7 @@
              </widget>
             </item>
             <item>
-             <widget class="QLineEdit" name="lineEdit_2">
+             <widget class="QLineEdit" name="outCedula">
               <property name="readOnly">
                <bool>true</bool>
               </property>
@@ -201,7 +203,7 @@
              </widget>
             </item>
             <item>
-             <widget class="QLineEdit" name="lineEdit_3">
+             <widget class="QLineEdit" name="outTelefono">
               <property name="readOnly">
                <bool>true</bool>
               </property>
@@ -237,7 +239,7 @@
              </widget>
             </item>
             <item>
-             <widget class="QLineEdit" name="lineEdit_4">
+             <widget class="QLineEdit" name="outEmail">
               <property name="readOnly">
                <bool>true</bool>
               </property>
@@ -273,7 +275,7 @@
              </widget>
             </item>
             <item>
-             <widget class="QTextEdit" name="textEdit">
+             <widget class="QTextEdit" name="outDireccion">
               <property name="readOnly">
                <bool>true</bool>
               </property>
@@ -322,6 +324,7 @@
               <property name="font">
                <font>
                 <pointsize>15</pointsize>
+                <weight>75</weight>
                 <italic>true</italic>
                 <bold>true</bold>
                </font>
@@ -351,7 +354,7 @@
           </widget>
          </item>
          <item>
-          <widget class="QTableView" name="tableView"/>
+          <widget class="QTableView" name="outLista"/>
          </item>
          <item>
           <widget class="QWidget" name="widget_11" native="true">
@@ -380,43 +383,7 @@
              </widget>
             </item>
             <item>
-             <widget class="QLineEdit" name="lineEdit_5">
-              <property name="readOnly">
-               <bool>true</bool>
-              </property>
-             </widget>
-            </item>
-           </layout>
-          </widget>
-         </item>
-         <item>
-          <widget class="QWidget" name="widget_13" native="true">
-           <layout class="QHBoxLayout" name="horizontalLayout_11">
-            <item>
-             <spacer name="horizontalSpacer_14">
-              <property name="orientation">
-               <enum>Qt::Horizontal</enum>
-              </property>
-              <property name="sizeHint" stdset="0">
-               <size>
-                <width>194</width>
-                <height>20</height>
-               </size>
-              </property>
-             </spacer>
-            </item>
-            <item>
-             <widget class="QLabel" name="label_11">
-              <property name="text">
-               <string>TOTAL</string>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignCenter</set>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QLineEdit" name="lineEdit_7">
+             <widget class="QLineEdit" name="outSubtotal">
               <property name="readOnly">
                <bool>true</bool>
               </property>
@@ -452,7 +419,43 @@
              </widget>
             </item>
             <item>
-             <widget class="QLineEdit" name="lineEdit_6">
+             <widget class="QLineEdit" name="outIVA">
+              <property name="readOnly">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </item>
+         <item>
+          <widget class="QWidget" name="widget_13" native="true">
+           <layout class="QHBoxLayout" name="horizontalLayout_11">
+            <item>
+             <spacer name="horizontalSpacer_14">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>194</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item>
+             <widget class="QLabel" name="label_11">
+              <property name="text">
+               <string>TOTAL</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLineEdit" name="outTotal">
               <property name="readOnly">
                <bool>true</bool>
               </property>
